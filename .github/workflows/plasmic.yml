@@ -85,3 +85,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_branch: ${{ steps.sync.outputs.new_branch }}
           destination_branch: ${{ github.event.client_payload.data.branch }}
+curl \
+  -i -u USER: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 \
+  -X POST \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/OWNER/REPO/dispatches \
+  -d '{"event_type":"on-demand-test","client_payload":{"unit":false,"integration":true}}'
+
